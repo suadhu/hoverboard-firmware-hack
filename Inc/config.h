@@ -55,7 +55,7 @@
 
 // ###### CONTROL VIA UART (serial) ######
 //#define CONTROL_SERIAL_USART2       // left sensor board cable, disable if ADC or PPM is used!
-#define CONTROL_BAUD       19200    // control via usart from eg an Arduino or raspberry
+//#define CONTROL_BAUD       19200    // control via usart from eg an Arduino or raspberry
 // for Arduino, use void loop(void){ Serial.write((uint8_t *) &steer, sizeof(steer)); Serial.write((uint8_t *) &speed, sizeof(speed));delay(20); }
 
 // ###### CONTROL VIA RC REMOTE ######
@@ -65,7 +65,7 @@
 
 // ###### CONTROL VIA TWO POTENTIOMETERS ######
 // ADC-calibration to cover the full poti-range: connect potis to left sensor board cable (0 to 3.3V) (do NOT use the red 15V wire in the cable!). see <How to calibrate>. turn the potis to minimum position, write value 1 to ADC1_MIN and value 2 to ADC2_MIN. turn to maximum position and repeat it for ADC?_MAX. make, flash and test it.
-//#define CONTROL_ADC                 // use ADC as input. disable CONTROL_SERIAL_USART2!
+#define CONTROL_ADC                 // use ADC as input. disable CONTROL_SERIAL_USART2!
 #define ADC1_MIN 0                // min ADC1-value while poti at minimum-position (0 - 4095)
 #define ADC1_MAX 4095               // max ADC1-value while poti at maximum-position (0 - 4095)
 #define ADC2_MIN 0                // min ADC2-value while poti at minimum-position (0 - 4095)
@@ -93,7 +93,7 @@
 #define FILTER              0.1  // lower value == softer filter. do not use values <0.01, you will get float precision issues.
 #define SPEED_COEFFICIENT   0.5  // higher value == stronger. 0.0 to ~2.0?
 #define STEER_COEFFICIENT   0.5  // higher value == stronger. if you do not want any steering, set it to 0.0; 0.0 to 1.0
-#define INVERT_R_DIRECTION
+#define INVERT_R_DIRECTION  1
 #define INVERT_L_DIRECTION
 #define BEEPS_BACKWARD 1    // 0 or 1
 
@@ -108,9 +108,9 @@ else { \
 
 // ###### SIMPLE BOBBYCAR ######
 // for better bobbycar code see: https://github.com/larsmm/hoverboard-firmware-hack-bbcar
-// #define FILTER              0.1
-// #define SPEED_COEFFICIENT   -1
-// #define STEER_COEFFICIENT   0
+#define FILTER              0.1
+#define SPEED_COEFFICIENT   -1
+#define STEER_COEFFICIENT   0
 
 // #define ADDITIONAL_CODE \
 if (button1 && speedR < 300) { /* drive backwards */ \
